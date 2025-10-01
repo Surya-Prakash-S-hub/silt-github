@@ -1,68 +1,292 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500&family=Lora:wght@400;600&family=Great+Vibes&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+*,
+*::after,
+*::before {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: orange;
+  --secondary-color: royalblue;
+}
+html,
+body {
+  scroll-padding-top: 100px;
+}
+/*style for body*/
+body {
+  height: 400vh;
+}
+/*navbar style */
+nav {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: padding 0.6s linear;
+  padding: 2rem 3rem 2rem 15rem;
+  z-index: 999;
+}
+nav .links {
+  width: 100%;
+  height: 100%;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.routeLink {
+  flex: 1;
+  width: 100%;
+  /* height: 100%; */
+}
+nav .homelink a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  text-decoration: none;
+  gap: 65px;
+}
+nav .homelink a .bgImg {
+  width: 132px;
+  height: 83px;
+  position: relative;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-image: url(images/logo.jpg);
+  border-radius: 50%;
+  overflow: hidden;
+  transform-origin: left;
+  transform: scale(1.5);
+  transition: transform 0.4s ease-in;
+}
+nav .homelink a .textframe {
+  font-size: 2.5em;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 660px;
+  transition: width 0.5s ease-out;
+}
+nav .homelink a .textframe span {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgb(8, 34, 114) 0%,
+    rgb(8, 34, 114) 40%,
+    orangered 40%,
+    orangered 100%
+  );
+}
+nav.onScrollMode {
+  padding: 0.1rem 0.1rem 0.4rem 1rem;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+}
+nav.onScrollMode .homelink a .bgImg {
+  transform: scaleX(0.7);
+}
+nav.onScrollMode .homelink a .bgImg {
+  transform: scale(0.8);
+}
+nav.onScrollMode .homelink a .textframe {
+  width: 0px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+nav .sidelink
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/*landing page design*/
+main {
+  width: 100%;
+  margin-top: 9rem;
+}
+.landing-page {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  padding: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.wraplandingpage {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+.maincontent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.slot1,
+.slot2 {
+  flex: 1;
+  flex-basis: 0;
+  flex-shrink: 0;
+}
+.slot1 .description {
+  width: 100%;
+  height: 100%;
+  margin-top: 7rem;
+}
+.slot1 .description h1 {
+  font-size: 2.4em;
+  margin-bottom: 1.5rem;
+}
+.slot1 .description h1 span {
+  color: white;
+  font-size: 2.7rem;
+  margin: 0.4rem 0;
+  display: inline-block;
+}
+.slot1 .description p {
+  text-transform: capitalize;
+  font-size: large;
+  color: #222;
+}
+.ctabtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1.5rem 0;
+}
+.ctabtn button {
+  display: flex;
+  padding: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  border-radius: 0.7rem;
+  background-image: linear-gradient(
+    to right,
+    rgba(65, 105, 225, 0),
+    rgba(255, 68, 0, 0)
+  );
+  transition: 0.4s linear;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+.ctabtn button:hover {
+  color: white;
+  background-image: linear-gradient(
+    to right,
+    rgba(65, 105, 225, 0.452),
+    rgba(255, 68, 0, 0.5)
+  );
+  box-shadow: 5px 5px 4px rgba(0,0,0,0.7);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.ctabtn button span {
+  font-size: 1.3rem;
+}
+.ctabtn button .iconbtn {
+  padding: 0 0.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.ctabtn button .iconbtn span {
+  font-size: 1.7rem;
+  line-height: 0px;
+  display: block;
+}
+.ctabtn button:hover .iconbtn span {
+  animation: quickbtn 0.7s ease-out 1;
+}
+@keyframes quickbtn {
+  0% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.slot2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-rows: repeat(2, 170px);
+  gap: 15px;
+  padding: 20px;
+}
+.slot2 .frameCard {
+  border-radius: 10px;
+}
+.slot2 .imgSlot1 {
+  background-image: url(images/hvac.avif);
+  background-position: center;
+  background-size: cover;
+}
+.slot2 .imgSlot2 {
+  background-image: url(images/reparitwo.webp);
+  background-position: center;
+  background-size: cover;
+}
+.slot2 .imgSlot3 {
+  background-image: url(images/reparithree.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.slot2 .imgSlot4 {
+  background-image: url(images/ventilation.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.slot2 .imgSlot5 {
+  background-image: url(images/heater.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.slot2 .imgSlot6 {
+  background-image: url(images/solution.webp);
+  background-position: center;
+  background-size: cover;
+}
+
+.canvaDesign {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.canvaDesign canvas {
+  width: 100%;
+  height: 500px;
+  display: block;
+  background: linear-gradient(180deg, #0a0f24 0%, #081021 100%);
+}
+/* style about page */
+.wrapAboutPage
+{
+  width: 1200px;
+  margin: 0 auto;
+}
+.aboutsection
+{
+  width: 100%;
+  height: auto;
+}
+.aboutwrap
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
