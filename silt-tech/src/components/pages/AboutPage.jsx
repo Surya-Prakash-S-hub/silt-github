@@ -1,36 +1,81 @@
 export const AboutPage = () => {
-    return(
-        <>
-            <div className="wrapAboutPage">
-                <div className="aboutsection">
-                    <h1>about us</h1>
-                    <div className="aboutwrap">
-                        <div className="aboutContent1">
-                            <div className="abtcnt">
-                                <div className="point1 intabt"><span>SILT TECH ENGINEERS PVT. LTD.</span> is a trusted provider of comprehensive HVAC and MEP solutions.</div>
-                                <div className="point2 intabt">
-                                    <div className="pointerIcon"><span>1.</span></div>
-                                    <p>We specialize in system design, consultation, installation, and maintenance for commercial and industrial projects.</p>
-                                </div>
-                                <div className="point3 intabt">
-                                    <div className="pointerIcon"><span>2.</span></div>
-                                    <p>With a team of experienced professionals, we deliver high-quality engineering services tailored to client needs.</p>
-                                </div>
-                                <div className="point4 intabt">
-                                    <div className="pointerIcon"><span>3.</span></div>
-                                    <p>Our turnkey solutions ensure efficiency, reliability, and long-term performance.</p>
-                                </div>
-                                <div className="point5 intabt">
-                                    <div className="pointerIcon"><span>4.</span></div>
-                                    <p>We are committed to excellence, innovation, and building lasting client relationships.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="aboutImgSection"></div>
-                    </div>
-                    <div className="designForAbout"></div>
+  //Concepts of the Company
+  const aboutDetails = [
+    {
+      head: "System Solutions",
+      descp:
+        " We specialize in system design, consultation, installation, and maintenance for commercial and industrial projects.",
+    },
+    {
+      head: "Expert Team",
+      descp:
+        " With a team of experienced professionals, we deliver high-quality engineering services tailored to client needs.",
+    },
+    {
+      head: "Turnkey Solutions",
+      descp:
+        " Our turnkey solutions ensure efficiency, reliability, and long-term performance.",
+    },
+    {
+      head: "Our Commitment",
+      descp:
+        "We are committed to excellence, innovation, and building lasting client relationships.",
+    },
+  ];
+  return (
+    <>
+      <section id="About">
+        <div className="wrapAboutPage">
+          <div className="aboutcontent">
+            <h1>
+              About <span>us</span>
+            </h1>
+            <div className="abtcontentmain">
+              <div className="textcontent">
+                <div
+                  className="point1"
+                  data-aos="slide-right"
+                  data-aos-easing="ease-out-back"
+                  data-aos-duration="1200"
+                >
+                  <strong>SILT TECH ENGINEERS PVT. LTD.</strong>
+                  <br /> <span>We provide professional MEP consulting and contracting
+                  services.</span>
                 </div>
+                <div className="mjrConcept">
+                  {aboutDetails.map((about, index) => {
+                    return (
+                      <div
+                        className={`intabt point${index + 2}`}
+                        key={index}
+                        data-aos="fade-down"
+                        data-aos-duration="400"
+                        data-aos-easing="ease-in"
+                        data-aos-delay={(index + 1) * 200}
+                      >
+                        <div className="pointerIcon">
+                          <span> {index + 1}. </span>
+                        </div>
+                        <div className="secondTopic">{about.head}</div>
+                        <p>{about.descp}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div
+                className="imgContent"
+                data-aos="zoom-in"
+                data-aos-duration="800"
+                data-aos-ease="ease"
+                data-aos-delay="500"
+              >
+                <div className="imgImg"></div>
+              </div>
             </div>
-        </>
-    )
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };

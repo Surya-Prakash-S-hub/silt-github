@@ -13,11 +13,16 @@
 }
 html,
 body {
-  scroll-padding-top: 100px;
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
 }
 /*style for body*/
 body {
-  height: 400vh;
+  background-color: #f8f8f8;
+}
+section {
+  overflow: hidden;
+  position: relative;
 }
 /*navbar style */
 nav {
@@ -27,8 +32,8 @@ nav {
   position: fixed;
   left: 0;
   top: 0;
-  transition: padding 0.6s linear;
-  padding: 2rem 3rem 2rem 15rem;
+  transition: all 0.42s ease-in-out;
+  padding: 2rem 3rem 2rem 7rem;
   z-index: 999;
 }
 nav .links {
@@ -42,39 +47,36 @@ nav .links {
 .routeLink {
   flex: 1;
   width: 100%;
-  /* height: 100%; */
 }
 nav .homelink a {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   width: fit-content;
   text-decoration: none;
-  gap: 65px;
+  transform: scale(1.7);
+  transition: all 0.42s ease-in-out;
+  transform-origin:left;
+  transform-style: preserve-3d;
 }
 nav .homelink a .bgImg {
-  width: 132px;
-  height: 83px;
-  position: relative;
-  background-size: cover;
-  background-position: 50%;
-  background-repeat: no-repeat;
+  width: 120px;
+  height: 60px;
   background-image: url(images/logo.jpg);
-  border-radius: 50%;
-  overflow: hidden;
-  transform-origin: left;
-  transform: scale(1.5);
-  transition: transform 0.4s ease-in;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: all 0.42s ease-in-out;
 }
 nav .homelink a .textframe {
-  font-size: 2.5em;
-  letter-spacing: 0.6px;
-  font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  transition: all 0.42s ease-in-out;
+  font-size: 1.3rem;
+  font-weight: 550;
   white-space: nowrap;
+  font-family: "Montserrat";
+  width: 335px;
   overflow: hidden;
-  width: 660px;
-  transition: width 0.5s ease-out;
 }
 nav .homelink a .textframe span {
   -webkit-background-clip: text;
@@ -89,29 +91,91 @@ nav .homelink a .textframe span {
   );
 }
 nav.onScrollMode {
+  transition: all 0.42s ease-in-out;
   padding: 0.1rem 0.1rem 0.4rem 1rem;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
-nav.onScrollMode .homelink a .bgImg {
-  transform: scaleX(0.7);
-}
-nav.onScrollMode .homelink a .bgImg {
-  transform: scale(0.8);
+nav.onScrollMode .homelink a {
+  transform: scale(1);
+  transition: all 0.42s ease-in-out;
 }
 nav.onScrollMode .homelink a .textframe {
+  transition: all 0.42s ease-in-out;
   width: 0px;
 }
 
-nav .sidelink
-{
+nav .sidelink {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 }
+nav .sidelink ul {
+  list-style-type: none;
+  display: flex;
+  width: 620px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-family: "Montserrat";
+}
+nav .sidelink ul li a {
+  display: block;
+  text-align: center;
+  padding: 1rem 1rem;
+  white-space: nowrap;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  position: relative;
+  color: #444;
+  animation: slideLinkOut 0.7s ease forwards 1;
+  animation-delay: calc(var(--delayLink) * 0.1);
+  opacity: 0;
+}
+@keyframes slideLinkOut {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+nav .sidelink ul li a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    rgba(65, 105, 225, 0.7),
+    rgba(255, 68, 0, 0.7)
+  );
+  left: 50%;
+  bottom: 0%;
+  transform: translate(-50%, -50%) scaleX(0);
+  transform-origin: right;
+  transition: transform 0.32s ease-in-out;
+}
+nav .sidelink ul li a.active::after {
+  transform: translate(-50%, -50%) scaleX(1);
+  transform-origin: left;
+}
+
+/* ^_^ */
+/* ^_^ */
+/* ^_^ */
 /*landing page design*/
+/*from this there an style for landingPage */
+/* ^_^ */
+/* ^_^ */
+/* ^_^ */
 main {
   width: 100%;
-  margin-top: 9rem;
+  margin-top: 8.5rem;
 }
 .landing-page {
   width: 100%;
@@ -143,10 +207,13 @@ main {
   width: 100%;
   height: 100%;
   margin-top: 7rem;
+  white-space: nowrap;
 }
 .slot1 .description h1 {
-  font-size: 2.4em;
-  margin-bottom: 1.5rem;
+  font-size: 2.1em;
+  margin-bottom: 1.3rem;
+  overflow: hidden;
+  font-family: "Lora";
 }
 .slot1 .description h1 span {
   color: white;
@@ -155,9 +222,10 @@ main {
   display: inline-block;
 }
 .slot1 .description p {
-  text-transform: capitalize;
-  font-size: large;
-  color: #222;
+  text-transform: uppercase;
+  font-size: medium;
+  letter-spacing: 0.8px;
+  color: #444;
 }
 .ctabtn {
   width: 100%;
@@ -165,12 +233,17 @@ main {
   align-items: center;
   justify-content: flex-start;
   margin: 1.5rem 0;
+  overflow: hidden;
+  padding-bottom: 20px;
 }
-.ctabtn button {
+.ctabtn a {
   display: flex;
   padding: 0.8rem;
   align-items: center;
   justify-content: center;
+  background-color: whitesmoke;
+  color: #111;
+  text-decoration: none;
   border: none;
   outline: none;
   text-transform: capitalize;
@@ -180,32 +253,32 @@ main {
     rgba(65, 105, 225, 0),
     rgba(255, 68, 0, 0)
   );
-  transition: 0.4s linear;
+  transition: all 0.4s linear;
   cursor: pointer;
 }
-.ctabtn button:hover {
+.ctabtn a:hover {
   color: white;
   background-image: linear-gradient(
     to right,
     rgba(65, 105, 225, 0.452),
     rgba(255, 68, 0, 0.5)
   );
-  box-shadow: 5px 5px 4px rgba(0,0,0,0.7);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.7);
 }
-.ctabtn button span {
+.ctabtn a span {
   font-size: 1.3rem;
 }
-.ctabtn button .iconbtn {
+.ctabtn a .iconbtn {
   padding: 0 0.4rem;
   position: relative;
   overflow: hidden;
 }
-.ctabtn button .iconbtn span {
+.ctabtn a .iconbtn span {
   font-size: 1.7rem;
   line-height: 0px;
   display: block;
 }
-.ctabtn button:hover .iconbtn span {
+.ctabtn a:hover .iconbtn span {
   animation: quickbtn 0.7s ease-out 1;
 }
 @keyframes quickbtn {
@@ -219,9 +292,9 @@ main {
 
 .slot2 {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  grid-template-rows: repeat(2, 170px);
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: repeat(3, 170px);
+  gap: 28px;
   padding: 20px;
 }
 .slot2 .frameCard {
@@ -257,7 +330,6 @@ main {
   background-position: center;
   background-size: cover;
 }
-
 .canvaDesign {
   position: absolute;
   width: 100%;
@@ -266,27 +338,1416 @@ main {
   top: 0;
   z-index: -1;
 }
-.canvaDesign canvas {
-  width: 100%;
-  height: 500px;
-  display: block;
-  background: linear-gradient(180deg, #0a0f24 0%, #081021 100%);
-}
 /* style about page */
-.wrapAboutPage
-{
-  width: 1200px;
-  margin: 0 auto;
-}
-.aboutsection
-{
+.wrapAboutPage {
   width: 100%;
   height: auto;
+  padding: 90px 0;
+  position: relative;
 }
-.aboutwrap
-{
+.wrapAboutPage::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to right, #0c2f97, orangered);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+.aboutcontent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.aboutcontent h1 {
+  font-size: 2.2rem;
+  text-transform: capitalize;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid #0c2f97;
+  padding-left: 0.5rem;
+}
+.aboutcontent h1 span {
+  background: linear-gradient(to right, #0c2f97, orangered);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+}
+.abtcontentmain {
   display: flex;
   flex-direction: row;
+  font-family: "Poppins", serif;
+  padding: 1rem;
+}
+.textcontent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 2 0 0;
+}
+.textcontent .point1 {
+  font-size: larger;
+}
+.textcontent .point1 strong {
+  letter-spacing: 0.7px;
+  font-size: 1.7em;
+  background: linear-gradient(
+    90deg,
+    #0c2f97 0%,
+    /* company blue */ #0c2f97 25%,
+    #0c2f97 40%,
+    /* white glare */ orangered 50%,
+    /* orange-red accent */ #ffffff 60%,
+    /* white glare again for smooth blend */ #0c2f97 75%,
+    #0c2f97 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: glareMove 5s linear infinite;
+}
+@keyframes glareMove {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+.mjrConcept {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding: 20px;
+  gap: 40px;
+}
+.intabt {
+  padding: 13px;
+  background-color: white;
+  filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.1));
+  border-radius: 15px;
+}
+.intabt .pointerIcon {
+  font-size: 3em;
+  font-family: "Lora";
+  color: #333;
+}
+.intabt .secondTopic {
+  font-weight: 590;
+  font-size: 1.2em;
+  margin: 0.1rem 0;
+  text-transform: uppercase;
+  color: #222;
+}
+.intabt p {
+  text-align: justify;
+  hyphens: auto;
+  font-size: 1em;
+  color: #222;
+  padding:0 3px;
+}
+.imgContent {
+  flex: 1.5 0 0;
+  width: 100%;
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  margin-left: 3rem;
+}
+.imgContent .imgImg {
+  width: 430px;
+  height: 430px;
+  background-image: url(images/abt.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: -1px -1px 2px royalblue, 1px 1px 2px orangered;
+}
+.imgContent .imgImg::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+  background-image: linear-gradient(55deg, royalblue, orangered);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(23px);
+}
+
+/* purpose page style */
+.wrapPurpose {
+  width: 100%;
+  height: auto;
+  padding: 4rem 0;
+}
+.purposeContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.purposeContent h1 {
+  font-size: 2.2rem;
+  text-transform: capitalize;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid #0c2f97;
+  padding-left: 0.5rem;
+}
+.purposeContent h1 span {
+  background: linear-gradient(to right, #0c2f97, orangered);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+}
+.mainpurpose {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 40px;
+}
+.mainpurpose h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  background: linear-gradient(
+    145deg,
+    #333 0%,
+    #333 40%,
+    #bdbdbd 45%,
+    #bdbdbd 48%,
+    #333 52%,
+    #333 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: moveBgClr 3s linear infinite;
+  text-transform: uppercase;
+}
+
+@keyframes moveBgClr {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0%;
+  }
+}
+
+.purposeforpage {
+  flex: 1;
+}
+.flexpurpose {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: auto;
+  gap: 20px;
+}
+.flexpurpose .PpCard {
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 0.5rem;
+  transition: transform 0.3s linear;
+  background-color: white;
+}
+.flexpurpose .PpCard .imgPpcard {
+  transition: transform 0.3s ease-in-out;
+  border-radius: 10%;
+  transform: scale(0.5);
+}
+.flexpurpose .PpCard:hover {
+  transform: translateY(-4px);
+}
+.flexpurpose .PpCard:hover .imgPpcard {
+  transform: scale(1.1);
+}
+.flexpurpose .PpCard .imgPpcard {
+  flex: 3;
+  background-image: url(images/outdoor\ unit.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(2) .imgPpcard {
+  flex: 3;
+  background-image: url(images/hiwall.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(3) .imgPpcard {
+  flex: 3;
+  background-image: url(images/casette\ unit.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(4) .imgPpcard {
+  flex: 3;
+  background-image: url(images/fcu\ unit.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(5) .imgPpcard {
+  flex: 3;
+  background-image: url(images/floor\ standing.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(6) .imgPpcard {
+  flex: 3;
+  background-image: url(images/ductable\ unit.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(7) .imgPpcard {
+  flex: 3;
+  background-image: url(images/package\ unit.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(8) .imgPpcard {
+  flex: 3;
+  background-image: url(images/chillers.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(9) .imgPpcard {
+  flex: 3;
+  background-image: url(images/smart\ ahu.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(11) .imgPpcard {
+  flex: 3;
+  background-image: url(images/cooling\ tower.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(12) .imgPpcard {
+  flex: 3;
+  background-image: url(images/ec\ fans.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(13) .imgPpcard {
+  flex: 3;
+  background-image: url(images/airconditioner.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(14) .imgPpcard {
+  flex: 3;
+  background-image: url(images/ventilators.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(15) .imgPpcard {
+  flex: 3;
+  background-image: url(images/ac\ pumps.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCard:nth-child(16) .imgPpcard {
+  flex: 3;
+  background-image: url(images/uvlamps.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.flexpurpose .PpCardBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flexpurpose .PpCardBtn button {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 20px;
+  background-color: white;
+}
+.flexpurpose .PpCardBtn button span {
+  font-size: 1.7em;
+  line-height: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #747474;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
+}
+.flexpurpose .PpCardBtn button:hover span {
+  color: #111;
+}
+.flexpurpose .PpCard .Pptext {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #333;
+  justify-content: center;
+  font-weight: 600;
+  padding: 0.5px;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  transition: letter-spacing 0.3s linear;
+  position: relative;
+  overflow: hidden;
+}
+.flexpurpose .PpCard .Pptext::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  background: linear-gradient(to right, #0c2f97, orangered);
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease;
+}
+.flexpurpose .PpCard:hover .Pptext::after {
+  width: 100%;
+  height: 100%;
+}
+.flexpurpose .PpCard:hover .Pptext {
+  letter-spacing: 0.5px;
+  color: #111;
+}
+
+/*mission style goes here */
+section#OurMission {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: block;
+  background-image: url(images/sitpic.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 5.5rem 0;
+}
+.ChangeGraph {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 56, 170, 0.582);
+  backdrop-filter: blur(2px);
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+.wrapMission {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  z-index: 35;
+  position: inherit;
+}
+.wrapMission::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #0481d4a9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.3, 1.1);
+  z-index: -1;
+  filter: blur(35px);
+  border-radius: 20px;
+}
+.wrapMission h1 {
+  font-size: 2.2rem;
+  text-transform: capitalize;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid #0c2f97;
+  padding-left: 0.5rem;
+  color: white;
+}
+.wrapMission h1 span {
+  background: linear-gradient(to right, #0c2f97, orangered);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  /* text-shadow: 0px 0px 3px white; */
+}
+.missionContent {
+  display: flex;
+  flex-direction: row;
+  margin: 0.8rem;
+  gap: 50px;
+}
+.missionList {
+  flex: 1 0 1;
+}
+.missionList ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 30px;
+}
+.missionList ul li {
+  font-size: 1.3em;
+  color: #f1f1f1;
+  font-family: "Poppins", serif;
+  position: relative;
+  line-height: 40px;
+  font-weight: 550;
+  letter-spacing: 0.4px;
+}
+.missionList ul li::before {
+  content: attr("");
+}
+.missionList ul li .pinPoint {
+  position: absolute;
+  top: 2px;
+  left: -35px;
+  font-size: x-large;
+}
+
+/* contact section style */
+.wrapContactDetails {
+  width: 100%;
+  height: auto;
+  padding: 5rem 0;
+}
+.handGesture
+{
+  position: absolute;
+  width: 100%;
+  max-width: calc( var(--x-width) / 3.5);
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url(/svg/trust-icon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: blur(5px);
+  opacity: 0.1;
+}
+.mainContactScreen {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 1.2rem;
+}
+.mainContactScreen h1 {
+  font-size: 2.2rem;
+  text-transform: capitalize;
+  width: fit-content;
+  border-left: 5px solid #0c2f97;
+  padding-left: 0.5rem;
+}
+.mainContactScreen h1 span {
+  background: linear-gradient(to right, #0c2f97, orangered);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+}
+.contactContainer {
+  display: flex;
+  flex-direction: row;
+}
+.contactContainer .firstFrame {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contactContainer .firstFrame .contactTagline {
+  padding: 0 0 0 1rem;
+  border-left: 1px dashed black;
+  overflow: hidden;
+}
+.contactContainer .firstFrame .contactTagline p {
+  white-space: nowrap;
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+.contactContainer .firstFrame .contactTagline h1 {
+  border: none;
+  padding: 0;
+  font-size: 3.6em;
+  font-family: 'GreatVibe', verdana;
+}
+.contactContainer .secondFrame {
+  flex: 1;
+  position: relative;
+}
+form {
+  margin: 0 auto;
+  width: 100%;
+  max-width: calc( var(--x-width) - 50px) ;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding: 6rem 3rem 0;
+  position: relative;
+  /* overflow: hidden; */
+}
+/* form::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  background: linear-gradient(135deg, #0c2f97b8, rgba(255, 68, 0, 0.581));
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(76px);
+} */
+.labelpin {
+  width: 100%;
+  height: 45px;
+  position: relative;
+  transition: all 0.4s ease-in;
+  color: #0c2f97;
+}
+.labelpin input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #0c2f97;
+  border-radius: 10px;
+  font-size: 21px;
+  outline: none;
+  padding: 0 1rem;
+  background-color: transparent;
+}
+.labelpin .label {
+  position: absolute;
+  pointer-events: none;
+  font-size: 21px;
+  transform: translate(19px, 12px);
+  top: 0px;
+  text-transform: capitalize;
+  color: #222;
+  font-family: "Poppins", serif;
+  background-color: transparent;
+  line-height: 17px;
+  transition: all 0.2s ease;
+  color: #0c2f97;
+}
+.labelpin2 {
+  width: 100%;
+  position: relative;
+}
+.labelpin2 textarea {
+  resize: vertical;
+  width: 100%;
+  height: 150px;
+  display: block;
+  font-size: 21px;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #0c2f97;
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: transparent;
+}
+.labelpin2 .label {
+  position: absolute;
+  top: 14px;
+  left: 23px;
+  font-size: 21px;
+  text-transform: capitalize;
+  color: #0c2f97;
+  font-family: "Poppins", serif;
+  line-height: 11px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+.labelpin input[type="text"]:focus,
+.labelpin input[type="text"]:valid {
+  border: 1px solid orangered;
+  background-color: white;
+}
+.labelpin input[type="text"]:focus + .label {
+  top: -19px;
+  font-size: 17px;
+  letter-spacing: 0.7px;
+  font-weight: 580;
+  color: orangered;
+  background-color: white;
+}
+.labelpin input:valid + .label {
+  top: -19px;
+  font-size: 17px;
+  letter-spacing: 0.7px;
+  font-weight: 580;
+  color: orangered;
+  background-color: white;
+}
+.labelpin2 textarea:focus,
+.labelpin2 textarea:valid {
+  border: 1px solid orangered;
+  background-color: white;
+}
+.labelpin2 textarea:focus + .label, .labelpin2 textarea:valid + .label {
+  top: -4px;
+  font-size: 17px;
+  letter-spacing: 0.7px;
+  font-weight: 580;
+  color: orangered;
+  background-color: white;
+}
+.submitBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.submitBtn button {
+  width: 170px;
+  height: 45px;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  background-image: linear-gradient(
+    to right,
+    rgba(65, 105, 225, 0.61),
+    rgba(255, 68, 0, 0.61)
+  );
+  background-size: 300% 100%;
+  animation: ai-gradient-move 3s linear infinite alternate;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+@keyframes ai-gradient-move {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+.submitBtn button:hover {
+  color: white;
+  background-image: linear-gradient(
+    to right,
+    rgba(65, 105, 225, 1),
+    rgba(255, 68, 0, 1)
+  );
+  box-shadow: -1px -1px 3px #0c2f97, 1px 1px 3px orangered;
+}
+.secondFrame .formSemiLine {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  z-index: -4;
+  --changeAngle: 0deg;
+  /* background: conic-gradient(#0c2f97 40%,orangered 60%); */
+  border-width: 3px;
+  border-style: solid;
+  border-top-color: orangered;
+  border-right-color: orangered;
+  border-bottom-color: #0c2f97;
+  border-left-color: #0c2f97;
+  border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+  animation: rotateClock 40s linear infinite alternate;
+  filter: blur(9px);
+}
+@keyframes rotateClock {
+  0% {
+    border-radius: 50%;
+  }
+  5% {
+    border-radius: 60% 40% 55% 45% / 45% 55% 60% 40%;
+  }
+  10% {
+    border-radius: 70% 30% 60% 40% / 40% 60% 35% 65%;
+  }
+  15% {
+    border-radius: 65% 35% 75% 25% / 55% 45% 70% 30%;
+  }
+  20% {
+    border-radius: 80% 20% 60% 40% / 60% 40% 50% 50%;
+  }
+  25% {
+    border-radius: 60% 40% 70% 30% / 30% 60% 40% 70%;
+  }
+  30% {
+    border-radius: 75% 25% 65% 35% / 35% 65% 55% 45%;
+  }
+  35% {
+    border-radius: 80% 60% 100% 50% / 50% 90% 80% 100%;
+  }
+  40% {
+    border-radius: 55% 45% 80% 20% / 70% 30% 60% 40%;
+  }
+  45% {
+    border-radius: 60% 40% 50% 50% / 80% 20% 70% 30%;
+  }
+  50% {
+    border-radius: 30% 100% 40% 60% / 70% 40% 60% 90%;
+  }
+  55% {
+    border-radius: 45% 55% 60% 40% / 60% 40% 80% 20%;
+  }
+  60% {
+    border-radius: 70% 30% 80% 20% / 50% 50% 60% 40%;
+  }
+  65% {
+    border-radius: 80% 20% 60% 40% / 40% 60% 30% 70%;
+  }
+  70% {
+    border-radius: 60% 40% 70% 30% / 70% 30% 60% 40%;
+  }
+  75% {
+    border-radius: 70% 30% 60% 40% / 40% 70% 30% 60%;
+  }
+  80% {
+    border-radius: 55% 45% 80% 20% / 60% 40% 70% 30%;
+  }
+  85% {
+    border-radius: 70% 80% 60% 10% / 70% 70% 30% 60%;
+  }
+  90% {
+    border-radius: 65% 35% 75% 25% / 55% 45% 70% 30%;
+  }
+  95% {
+    border-radius: 80% 20% 60% 40% / 60% 40% 50% 50%;
+  }
+  100% {
+    border-radius: 50%;
+  }
+}
+/* footer style goes from here */
+footer {
+  width: 100%;
+  height: auto;
+  padding: 3rem 1rem 1rem;
+  background: linear-gradient(35deg, #2d4aa0 0%, #2245a6 60%, #ff5416 100%);
+  color: white;
+  text-shadow: 0px 0px 5px #222;
+  border-top: 2px solid rgba(251, 141, 108, 0.1);
+  position: relative;
+}
+.wrapFooter {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.companyContacts {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: row;
+}
+.contactDetails {
+  flex: 2;
+  padding: 1rem;
+  position: relative;
+}
+.companyAddrs .name {
+  font-size: 1.8em;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 7px;
+}
+.companyAddrs .locations {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.companyAddrs .locations .address .locationIcon {
+  float: left;
+  font-size: 1.3em;
+  padding-right: 5px;
+}
+.companyAddrs .locations .address {
+  font-size: 1.3em;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+}
+.activeLink {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.activeLink .socialAdrs ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.activeLink .socialAdrs ul li {
+  margin: 7px 10px;
+}
+.activeLink .socialAdrs ul li a {
+  width: 35px;
+  height: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 1.4em;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+.activeLink .socialAdrs ul li a:hover {
+  transform: translateY(-7px);
+  color: rgb(246, 81, 20);
+}
+.wrapFooter .copyrights {
+  text-align: center;
+  font-size: larger;
+  letter-spacing: 0.6px;
+}
+.activeLink .returnLink {
+  flex: 2;
+  padding: 1rem 0;
+}
+
+.activeLink .returnLink .navLinks ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+.activeLink .returnLink .navLinks ul li {
+  position: relative;
+  text-align: center;
+  margin: 0 0.1rem;
+}
+.activeLink .returnLink .navLinks ul li a {
+  display: block;
+  padding: 1px 3 px;
+  font-size: 1.1em;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  letter-spacing: 0.6px;
+}
+.activeLink .returnLink .navLinks ul li a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in;
+  transform-origin: right;
+}
+.activeLink .returnLink .navLinks ul li a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.locationPointerIcon,
+.contactPointerIcon {
+  position: absolute;
+  top: -45%;
+  color: #111;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  background-color: rgba(17, 69, 214, 0.252);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 2.5em;
+}
+@media  screen and (max-width:1500px) {
+  nav .homelink a {
+    transform: scale(1.4);
+  }
+  nav .sidelink ul li a {
+    padding: 0.5rem 0.5rem;
+  }
+}
+@media  screen and (max-width:1200px) {
+  nav {
+    padding: 2rem 2.7rem 2rem 4rem;
+  }
+  nav .sidelink ul 
+  {
+    justify-content: flex-end;
+  }
+  .landing-page {
+    padding: 2rem 1rem;
+  }
+  .wrapAboutPage, .wrapPurpose, section#OurMission, .wrapContactDetails
+  {
+    padding: 40px 1rem;
+  }
+  .mjrConcept
+  {
+    gap: 22px;
+  }
+  .aboutcontent h1, .purposeContent h1, .wrapMission h1, .mainContactScreen h1 {
+    font-size: 2em;
+    margin-bottom: 1rem;
+  }
+  .missionContent
+  {
+    gap: 30px;
+    margin: 1rem;
+    font-size: 1em;
+  }
+  .handGesture
+  {
+    height: 500px;
+  }
+}
+@media  screen and (max-width:900px) {
+  nav {
+    padding: 1.6rem 2.2rem 1.6rem 2rem;
+  }
+  nav .homelink a {
+    transform: scale(1.2);
+  }
+  nav .sidelink
+  {
+    justify-content: flex-end;
+  }
+  nav .sidelink .menuBarContent {
+    display: block;
+  }
+  nav .sidelink .menuBarContent .barSet {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    border: 1px solid #222222a0;
+    border-radius: 10px;
+  }
+  nav .sidelink .menuBarContent .barSet .bar {
+    width: 80%;
+    height: 7px;
+    background-color: #666;
+    position: absolute;
+    border-radius: 50px;
+    top: 20px;
+    left: 5px;
+    transform-origin: left;
+    transition: all 0.42s ease-in;
+  }
+  nav .sidelink .menuBarContent .barSet .bar:first-child {
+    top: 6px;
+    left: 5px;
+    transform: rotate(0deg);
+  }
+  nav .sidelink .menuBarContent .barSet .bar:nth-child(2) {
+    transform: scaleX(1);
+  }
+  nav .sidelink .menuBarContent .barSet .bar:last-child {
+    top: 35px;
+    left: 5px;
+    transform: rotate(0deg);
+  }
+  nav .sidelink .menuBarContent .barSet.activeMenuBtn .bar:first-child {
+    top: 8px;
+    left: 11px;
+    transform: rotate(45deg);
+  }
+  nav .sidelink .menuBarContent .barSet.activeMenuBtn .bar:nth-child(2) {
+    transform: scaleX(0);
+  }
+  nav .sidelink .menuBarContent .barSet.activeMenuBtn .bar:last-child {
+    top: 35px;
+    left: 11px;
+    transform: rotate(-45deg);
+  }
+  nav .sidelink .menu {
+    position: absolute;
+    right: -200%;
+    top: 100%;
+    width: 100%;
+    height: 100vh;
+    background:linear-gradient(45deg,#1a3fa68b,rgba(255, 68, 0, 0.544));
+    backdrop-filter: blur(15px);
+    transition: right 0.623s ease-in;
+  }
+  nav .sidelink .menu .closeMenuBtn
+  {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+  nav .sidelink .menu .closeMenuBtn span 
+  {
+    background-color: red;
+    padding: 6px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color:white;
+  }
+  nav .sidelink .menu .closeMenuBtn span ion-icon
+  {
+    transform: translateY(7px);
+    font-size: 28px;
+  }
+  nav .sidelink .menu.show-menu {
+    right: 0%;
+    transition: right 0.623s ease-out;
+  }
+  nav .sidelink .menu ul 
+  {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+  }
+  .handGesture{
+    height: 400px;
+  }
+  nav .sidelink .menu ul li a
+  {
+    color: #f1f1f1;
+    padding: 0.8rem 0.4rem;
+  }
+  form {
+    padding: 5rem 2rem 0;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  body {
+    scroll-padding-top: 30px;
+  }
+  nav {
+    padding: 0.6rem 0.7rem 0.6rem 0;
+  }
+  nav.onScrollMode {
+    padding: 0.3rem 0rem;
+  }
+  nav.onScrollMode .homelink a {
+    transform: scale(0.8);
+  }
+  nav .homelink a .textframe {
+    font-size: 1rem;
+    width: 255px;
+  }
+  nav .sidelink {
+    justify-content: flex-end;
+    padding: 0.6rem;
+  }
+  /* menubar Activation */
+  /**/
+  /**/
+  /**/
+  
+  /* home style */
+  /**/
+  /**/
+  /**/
+  .homelink.routeLink a {
+    transform: scale(1);
+  }
+  main {
+    margin-top: 5rem;
+  }
+  .wraplandingpage {
+    padding: 0 1rem;
+  }
+  .maincontent {
+    flex-direction: column;
+  }
+  .slot1 .description {
+    margin-top: 2.5rem;
+  }
+  .slot1 .description h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .slot1 .description h1 span {
+    font-size: 2.5rem;
+  }
+  .slot1 .description p {
+    font-size: small;
+  }
+  .ctabtn button {
+    padding: 0.6rem;
+  }
+  .ctabtn button span {
+    font-size: 1rem;
+  }
+  .ctabtn button .iconbtn span {
+    font-size: 1.3rem;
+  }
+  .slot2 {
+    padding: 10px;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-rows: repeat(2, 130px);
+  }
+  .wrapAboutPage {
+    padding: 50px 1rem 0;
+  }
+  .wrapAboutPage::after {
+    height: 40px;
+    clip-path: polygon(0 100%, 0 0, 100% 100%);
+  }
+  .aboutcontent {
+    overflow: visible;
+  }
+  .aboutcontent h1,
+  .purposeContent h1,
+  .wrapMission h1,
+  .mainContactScreen h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+  .abtcontentmain {
+    flex-direction: column;
+  }
+  .textcontent {
+    gap: 5px;
+  }
+  .textcontent .point1 {
+    font-size: medium;
+  }
+  .mjrConcept {
+    gap: 20px;
+  }
+  .intabt {
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.4);
+  }
+  .intabt .pointerIcon {
+    font-size: 2.2em;
+    float: left;
+    clear: right;
+    padding-right: 0.5rem;
+  }
+  .intabt .secondTopic {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+  .intabt p {
+    hyphens: auto;
+    text-justify: inter-word;
+    padding: 5px 10px;
+  }
+  .imgContent {
+    margin-left: 3rem;
+    flex: 1 0 0;
+    z-index: -1;
+  }
+  .imgContent .imgImg {
+    width: 300px;
+    height: 300px;
+  }
+  .wrapPurpose {
+    padding: 3rem 1rem;
+  }
+  .mainpurpose {
+    gap: 25px;
+  }
+  .mainpurpose h3 {
+    font-size: 1.1rem;
+  }
+  .flexpurpose {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  .flexpurpose .PpCard {
+    min-height: 230px !important;
+    /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4); */
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.1));
+  }
+  .flexpurpose .PpCard .imgPpcard {
+    transform: scale(0.8);
+  }
+  section#OurMission {
+    padding: 3rem 1rem;
+    background-position: bottom;
+  }
+  .missionContent {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .wrapMission::after {
+    width: 70%;
+    background-color: #0481d483;
+  }
+  .missionList ul {
+    gap: 10px;
+    padding-left: 20px;
+  }
+  .missionList ul li {
+    font-size: 1rem;
+    line-height: 30px;
+  }
+  .handGesture
+  {
+    height: 100px;
+    left: 75%;
+    opacity: 0.3;
+    filter: blur(0px);
+  }
+  .wrapContactDetails {
+    padding: 3rem 1rem;
+  }
+  .mainContactScreen {
+    padding: 0.8rem;
+  }
+  .contactContainer {
+    flex-direction: column;
+  }
+  .contactContainer .firstFrame {
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+  .contactContainer .firstFrame .contactTagline p {
+    font-size: 1.7rem; 
+    margin-bottom: 0.3rem;
+  }
+  .contactContainer .firstFrame .contactTagline h1 {
+    font-size: 3.1rem;
+  }
+  form {
+    margin: 0;
+    padding: 2rem 0.5rem 0;
+    gap: 15px;
+  }
+  .labelpin input {
+    font-size: 18px;
+  }
+  .labelpin .label {
+    font-size: 18px;
+  }
+  .labelpin2 textarea {
+    font-size: 18px;
+    padding: 0.8rem;
+  }
+  .labelpin2 .label {
+    font-size: 18px;
+    left: 15px;
+  }
+  .submitBtn {
+    margin: 1rem 0;
+  }
+  .submitBtn button {
+    font-size: 18px;
+    width: 150px;
+    height: 40px;
+  }
+  .secondFrame .formSemiLine {
+    width: 100%;
+    height: 100%;
+  }
+  footer {
+    background: linear-gradient(35deg, #0c2f97 0%, #1a3fa6 20%, #ff4500 100%);
+  }
+  .activeLink .returnLink .navLinks ul
+  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .activeLink .returnLink .navLinks ul li a 
+  {
+    font-size: 0.9em;
+  }
+  .companyContacts {
+    flex-direction: column;
+  }
+  .contactDetails {
+    padding: 0;
+  }
+  .companyAddrs .name {
+    font-size: 1.1rem;
+  }
+  .companyAddrs .locations {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .companyAddrs .locations .address .locationIcon {
+    font-size: 1rem;
+  }
+  .companyAddrs .locations .address {
+    font-size:0.9rem;
+  }
+  .contactDetails .socialAdrs ul {
+    float: right;
+  }
+  .contactDetails .socialAdrs ul li {
+    margin: 5px 8px;
+  }
+  .contactDetails .socialAdrs ul li a {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em;
+  }
+  .locationPointerIcon
+  {
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+    top: -80%;
+  }
+  .activeLink
+  {
+    margin-top: 2rem;
+  }
+  .contactPointerIcon
+  {
+    display: none;
+  }
+  .activeLink .returnLink
+  {
+    padding: 0.7rem 0;
+  }
 }

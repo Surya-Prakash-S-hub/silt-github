@@ -10,7 +10,7 @@ const ShootingStarCanvas = () => {
     // ✅ Resize canvas to fill width and fixed height
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = 500;
+      canvas.height = 700;
     };
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
@@ -113,7 +113,7 @@ const ShootingStarCanvas = () => {
       ref={canvasRef}
       style={{
         width: "100%",
-        height: "500px",
+        height: "690px",
         display: "block",
         background: "linear-gradient(135deg, royalblue, rgb(118, 150, 246))",
       }}
